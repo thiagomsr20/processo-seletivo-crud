@@ -29,26 +29,219 @@ namespace erpfake
         /// </summary>
         private void InitializeComponent()
         {
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.UnidadeDeMedidaLabel = new System.Windows.Forms.Label();
+            this.SubFamiliaLabel = new System.Windows.Forms.Label();
+            this.FamiliaLabel = new System.Windows.Forms.Label();
+            this.DescricaoLabel = new System.Windows.Forms.Label();
+            this.CodigoLabel = new System.Windows.Forms.Label();
+            this.CodigoTextBox = new System.Windows.Forms.TextBox();
+            this.DescricaoTextBox = new System.Windows.Forms.TextBox();
+            this.FamiliaComboBox = new System.Windows.Forms.ComboBox();
+            this.SubFamiliaComboBox = new System.Windows.Forms.ComboBox();
+            this.UnidadeDeMedidaComboBox = new System.Windows.Forms.ComboBox();
+            this.InserirButton = new System.Windows.Forms.Button();
+            this.AtualizaButton = new System.Windows.Forms.Button();
+            this.Excluir = new System.Windows.Forms.Button();
+            this.SairButton = new System.Windows.Forms.Button();
+            this.PesquisarButton = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.PesquisarButton);
+            this.groupBox1.Controls.Add(this.SairButton);
+            this.groupBox1.Controls.Add(this.Excluir);
+            this.groupBox1.Controls.Add(this.AtualizaButton);
+            this.groupBox1.Controls.Add(this.InserirButton);
+            this.groupBox1.Controls.Add(this.UnidadeDeMedidaComboBox);
+            this.groupBox1.Controls.Add(this.SubFamiliaComboBox);
+            this.groupBox1.Controls.Add(this.FamiliaComboBox);
+            this.groupBox1.Controls.Add(this.DescricaoTextBox);
+            this.groupBox1.Controls.Add(this.CodigoTextBox);
+            this.groupBox1.Controls.Add(this.UnidadeDeMedidaLabel);
+            this.groupBox1.Controls.Add(this.SubFamiliaLabel);
+            this.groupBox1.Controls.Add(this.FamiliaLabel);
+            this.groupBox1.Controls.Add(this.DescricaoLabel);
+            this.groupBox1.Controls.Add(this.CodigoLabel);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(638, 376);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dados cadastrais";
+            // 
+            // UnidadeDeMedidaLabel
+            // 
+            this.UnidadeDeMedidaLabel.AutoSize = true;
+            this.UnidadeDeMedidaLabel.Location = new System.Drawing.Point(11, 219);
+            this.UnidadeDeMedidaLabel.Name = "UnidadeDeMedidaLabel";
+            this.UnidadeDeMedidaLabel.Size = new System.Drawing.Size(103, 13);
+            this.UnidadeDeMedidaLabel.TabIndex = 4;
+            this.UnidadeDeMedidaLabel.Text = "Unidade de Medida:";
+            // 
+            // SubFamiliaLabel
+            // 
+            this.SubFamiliaLabel.AutoSize = true;
+            this.SubFamiliaLabel.Location = new System.Drawing.Point(51, 178);
+            this.SubFamiliaLabel.Name = "SubFamiliaLabel";
+            this.SubFamiliaLabel.Size = new System.Drawing.Size(63, 13);
+            this.SubFamiliaLabel.TabIndex = 3;
+            this.SubFamiliaLabel.Text = "Sub família:";
+            // 
+            // FamiliaLabel
+            // 
+            this.FamiliaLabel.AutoSize = true;
+            this.FamiliaLabel.Location = new System.Drawing.Point(70, 138);
+            this.FamiliaLabel.Name = "FamiliaLabel";
+            this.FamiliaLabel.Size = new System.Drawing.Size(44, 13);
+            this.FamiliaLabel.TabIndex = 2;
+            this.FamiliaLabel.Text = "Família:";
+            // 
+            // DescricaoLabel
+            // 
+            this.DescricaoLabel.AutoSize = true;
+            this.DescricaoLabel.Location = new System.Drawing.Point(56, 101);
+            this.DescricaoLabel.Name = "DescricaoLabel";
+            this.DescricaoLabel.Size = new System.Drawing.Size(58, 13);
+            this.DescricaoLabel.TabIndex = 1;
+            this.DescricaoLabel.Text = "Descrição:";
+            // 
+            // CodigoLabel
+            // 
+            this.CodigoLabel.AutoSize = true;
+            this.CodigoLabel.Location = new System.Drawing.Point(71, 60);
+            this.CodigoLabel.Name = "CodigoLabel";
+            this.CodigoLabel.Size = new System.Drawing.Size(43, 13);
+            this.CodigoLabel.TabIndex = 0;
+            this.CodigoLabel.Text = "Código:";
+            // 
+            // CodigoTextBox
+            // 
+            this.CodigoTextBox.Location = new System.Drawing.Point(120, 57);
+            this.CodigoTextBox.Name = "CodigoTextBox";
+            this.CodigoTextBox.Size = new System.Drawing.Size(176, 20);
+            this.CodigoTextBox.TabIndex = 5;
+            // 
+            // DescricaoTextBox
+            // 
+            this.DescricaoTextBox.Location = new System.Drawing.Point(120, 98);
+            this.DescricaoTextBox.Name = "DescricaoTextBox";
+            this.DescricaoTextBox.Size = new System.Drawing.Size(510, 20);
+            this.DescricaoTextBox.TabIndex = 6;
+            // 
+            // FamiliaComboBox
+            // 
+            this.FamiliaComboBox.FormattingEnabled = true;
+            this.FamiliaComboBox.Items.AddRange(new object[] {
+            "Chapa",
+            "Tubo",
+            "Plástico"});
+            this.FamiliaComboBox.Location = new System.Drawing.Point(120, 135);
+            this.FamiliaComboBox.Name = "FamiliaComboBox";
+            this.FamiliaComboBox.Size = new System.Drawing.Size(176, 21);
+            this.FamiliaComboBox.TabIndex = 7;
+            // 
+            // SubFamiliaComboBox
+            // 
+            this.SubFamiliaComboBox.FormattingEnabled = true;
+            this.SubFamiliaComboBox.Location = new System.Drawing.Point(120, 175);
+            this.SubFamiliaComboBox.Name = "SubFamiliaComboBox";
+            this.SubFamiliaComboBox.Size = new System.Drawing.Size(176, 21);
+            this.SubFamiliaComboBox.TabIndex = 8;
+            // 
+            // UnidadeDeMedidaComboBox
+            // 
+            this.UnidadeDeMedidaComboBox.FormattingEnabled = true;
+            this.UnidadeDeMedidaComboBox.Location = new System.Drawing.Point(120, 216);
+            this.UnidadeDeMedidaComboBox.Name = "UnidadeDeMedidaComboBox";
+            this.UnidadeDeMedidaComboBox.Size = new System.Drawing.Size(176, 21);
+            this.UnidadeDeMedidaComboBox.TabIndex = 9;
+            // 
+            // InserirButton
+            // 
+            this.InserirButton.Location = new System.Drawing.Point(6, 330);
+            this.InserirButton.Name = "InserirButton";
+            this.InserirButton.Size = new System.Drawing.Size(120, 40);
+            this.InserirButton.TabIndex = 10;
+            this.InserirButton.Text = "Inserir";
+            this.InserirButton.UseVisualStyleBackColor = true;
+            // 
+            // AtualizaButton
+            // 
+            this.AtualizaButton.Location = new System.Drawing.Point(132, 330);
+            this.AtualizaButton.Name = "AtualizaButton";
+            this.AtualizaButton.Size = new System.Drawing.Size(120, 40);
+            this.AtualizaButton.TabIndex = 11;
+            this.AtualizaButton.Text = "Atualizar";
+            this.AtualizaButton.UseVisualStyleBackColor = true;
+            // 
+            // Excluir
+            // 
+            this.Excluir.Location = new System.Drawing.Point(258, 330);
+            this.Excluir.Name = "Excluir";
+            this.Excluir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Excluir.Size = new System.Drawing.Size(120, 40);
+            this.Excluir.TabIndex = 12;
+            this.Excluir.Text = "Excluir";
+            this.Excluir.UseVisualStyleBackColor = true;
+            // 
+            // SairButton
+            // 
+            this.SairButton.Location = new System.Drawing.Point(510, 330);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(120, 40);
+            this.SairButton.TabIndex = 13;
+            this.SairButton.Text = "Sair";
+            this.SairButton.UseVisualStyleBackColor = true;
+            this.SairButton.Click += new System.EventHandler(this.SairButton_Click);
+            // 
+            // PesquisarButton
+            // 
+            this.PesquisarButton.Location = new System.Drawing.Point(384, 330);
+            this.PesquisarButton.Name = "PesquisarButton";
+            this.PesquisarButton.Size = new System.Drawing.Size(120, 40);
+            this.PesquisarButton.TabIndex = 14;
+            this.PesquisarButton.Text = "Pesquisar";
+            this.PesquisarButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 400);
-            this.Name = "Form1";
-            this.Text = "Cadastro de Material";
-
+            this.ClientSize = new System.Drawing.Size(664, 400);
+            this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-
+            this.Text = "Cadastro de Material";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label UnidadeDeMedidaLabel;
+        private System.Windows.Forms.Label SubFamiliaLabel;
+        private System.Windows.Forms.Label FamiliaLabel;
+        private System.Windows.Forms.Label DescricaoLabel;
+        private System.Windows.Forms.Label CodigoLabel;
+        private System.Windows.Forms.TextBox DescricaoTextBox;
+        private System.Windows.Forms.TextBox CodigoTextBox;
+        private System.Windows.Forms.ComboBox UnidadeDeMedidaComboBox;
+        private System.Windows.Forms.ComboBox SubFamiliaComboBox;
+        private System.Windows.Forms.ComboBox FamiliaComboBox;
+        private System.Windows.Forms.Button PesquisarButton;
+        private System.Windows.Forms.Button SairButton;
+        private System.Windows.Forms.Button Excluir;
+        private System.Windows.Forms.Button AtualizaButton;
+        private System.Windows.Forms.Button InserirButton;
     }
 }
 
