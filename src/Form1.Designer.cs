@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace erpfake
 {
     partial class Form1
@@ -30,26 +32,30 @@ namespace erpfake
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PesquisarButton = new System.Windows.Forms.Button();
+            this.SairButton = new System.Windows.Forms.Button();
+            this.Excluir = new System.Windows.Forms.Button();
+            this.AtualizaButton = new System.Windows.Forms.Button();
+            this.InserirButton = new System.Windows.Forms.Button();
+            this.UnidadeDeMedidaComboBox = new System.Windows.Forms.ComboBox();
+            this.SubFamiliaComboBox = new System.Windows.Forms.ComboBox();
+            this.FamiliaComboBox = new System.Windows.Forms.ComboBox();
+            this.DescricaoTextBox = new System.Windows.Forms.TextBox();
+            this.CodigoTextBox = new System.Windows.Forms.TextBox();
             this.UnidadeDeMedidaLabel = new System.Windows.Forms.Label();
             this.SubFamiliaLabel = new System.Windows.Forms.Label();
             this.FamiliaLabel = new System.Windows.Forms.Label();
             this.DescricaoLabel = new System.Windows.Forms.Label();
             this.CodigoLabel = new System.Windows.Forms.Label();
-            this.CodigoTextBox = new System.Windows.Forms.TextBox();
-            this.DescricaoTextBox = new System.Windows.Forms.TextBox();
-            this.FamiliaComboBox = new System.Windows.Forms.ComboBox();
-            this.SubFamiliaComboBox = new System.Windows.Forms.ComboBox();
-            this.UnidadeDeMedidaComboBox = new System.Windows.Forms.ComboBox();
-            this.InserirButton = new System.Windows.Forms.Button();
-            this.AtualizaButton = new System.Windows.Forms.Button();
-            this.Excluir = new System.Windows.Forms.Button();
-            this.SairButton = new System.Windows.Forms.Button();
-            this.PesquisarButton = new System.Windows.Forms.Button();
+            this.CodigoMensagemDeErro = new System.Windows.Forms.Label();
+            this.DescricaoMensagemDeErro = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.DescricaoMensagemDeErro);
+            this.groupBox1.Controls.Add(this.CodigoMensagemDeErro);
             this.groupBox1.Controls.Add(this.PesquisarButton);
             this.groupBox1.Controls.Add(this.SairButton);
             this.groupBox1.Controls.Add(this.Excluir);
@@ -71,6 +77,97 @@ namespace erpfake
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados cadastrais";
+            // 
+            // PesquisarButton
+            // 
+            this.PesquisarButton.Location = new System.Drawing.Point(384, 330);
+            this.PesquisarButton.Name = "PesquisarButton";
+            this.PesquisarButton.Size = new System.Drawing.Size(120, 40);
+            this.PesquisarButton.TabIndex = 14;
+            this.PesquisarButton.Text = "Pesquisar";
+            this.PesquisarButton.UseVisualStyleBackColor = true;
+            // 
+            // SairButton
+            // 
+            this.SairButton.Location = new System.Drawing.Point(510, 330);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(120, 40);
+            this.SairButton.TabIndex = 13;
+            this.SairButton.Text = "Sair";
+            this.SairButton.UseVisualStyleBackColor = true;
+            this.SairButton.Click += new System.EventHandler(this.SairButton_Click);
+            // 
+            // Excluir
+            // 
+            this.Excluir.Location = new System.Drawing.Point(258, 330);
+            this.Excluir.Name = "Excluir";
+            this.Excluir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Excluir.Size = new System.Drawing.Size(120, 40);
+            this.Excluir.TabIndex = 12;
+            this.Excluir.Text = "Excluir";
+            this.Excluir.UseVisualStyleBackColor = true;
+            // 
+            // AtualizaButton
+            // 
+            this.AtualizaButton.Location = new System.Drawing.Point(132, 330);
+            this.AtualizaButton.Name = "AtualizaButton";
+            this.AtualizaButton.Size = new System.Drawing.Size(120, 40);
+            this.AtualizaButton.TabIndex = 11;
+            this.AtualizaButton.Text = "Atualizar";
+            this.AtualizaButton.UseVisualStyleBackColor = true;
+            // 
+            // InserirButton
+            // 
+            this.InserirButton.Location = new System.Drawing.Point(6, 330);
+            this.InserirButton.Name = "InserirButton";
+            this.InserirButton.Size = new System.Drawing.Size(120, 40);
+            this.InserirButton.TabIndex = 10;
+            this.InserirButton.Text = "Inserir";
+            this.InserirButton.UseVisualStyleBackColor = true;
+            // 
+            // UnidadeDeMedidaComboBox
+            // 
+            this.UnidadeDeMedidaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.UnidadeDeMedidaComboBox.FormattingEnabled = true;
+            this.UnidadeDeMedidaComboBox.Items.AddRange(new object[] {
+            "mm (Milimetros)",
+            "in (Polegadas)"});
+            this.UnidadeDeMedidaComboBox.Location = new System.Drawing.Point(120, 216);
+            this.UnidadeDeMedidaComboBox.Name = "UnidadeDeMedidaComboBox";
+            this.UnidadeDeMedidaComboBox.Size = new System.Drawing.Size(176, 21);
+            this.UnidadeDeMedidaComboBox.TabIndex = 9;
+            // 
+            // SubFamiliaComboBox
+            // 
+            this.SubFamiliaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubFamiliaComboBox.FormattingEnabled = true;
+            this.SubFamiliaComboBox.Location = new System.Drawing.Point(120, 175);
+            this.SubFamiliaComboBox.Name = "SubFamiliaComboBox";
+            this.SubFamiliaComboBox.Size = new System.Drawing.Size(176, 21);
+            this.SubFamiliaComboBox.TabIndex = 8;
+            // 
+            // FamiliaComboBox
+            // 
+            this.FamiliaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FamiliaComboBox.FormattingEnabled = true;
+            this.FamiliaComboBox.Location = new System.Drawing.Point(120, 135);
+            this.FamiliaComboBox.Name = "FamiliaComboBox";
+            this.FamiliaComboBox.Size = new System.Drawing.Size(176, 21);
+            this.FamiliaComboBox.TabIndex = 7;
+            // 
+            // DescricaoTextBox
+            // 
+            this.DescricaoTextBox.Location = new System.Drawing.Point(120, 98);
+            this.DescricaoTextBox.Name = "DescricaoTextBox";
+            this.DescricaoTextBox.Size = new System.Drawing.Size(510, 20);
+            this.DescricaoTextBox.TabIndex = 6;
+            // 
+            // CodigoTextBox
+            // 
+            this.CodigoTextBox.Location = new System.Drawing.Point(120, 57);
+            this.CodigoTextBox.Name = "CodigoTextBox";
+            this.CodigoTextBox.Size = new System.Drawing.Size(176, 20);
+            this.CodigoTextBox.TabIndex = 5;
             // 
             // UnidadeDeMedidaLabel
             // 
@@ -117,94 +214,23 @@ namespace erpfake
             this.CodigoLabel.TabIndex = 0;
             this.CodigoLabel.Text = "Código:";
             // 
-            // CodigoTextBox
+            // CodigoMensagemDeErro
             // 
-            this.CodigoTextBox.Location = new System.Drawing.Point(120, 57);
-            this.CodigoTextBox.Name = "CodigoTextBox";
-            this.CodigoTextBox.Size = new System.Drawing.Size(176, 20);
-            this.CodigoTextBox.TabIndex = 5;
+            this.CodigoMensagemDeErro.AutoSize = true;
+            this.CodigoMensagemDeErro.Location = new System.Drawing.Point(117, 41);
+            this.CodigoMensagemDeErro.Name = "CodigoMensagemDeErro";
+            this.CodigoMensagemDeErro.Size = new System.Drawing.Size(29, 13);
+            this.CodigoMensagemDeErro.TabIndex = 15;
+            this.CodigoMensagemDeErro.Text = string.Empty;
             // 
-            // DescricaoTextBox
+            // DescricaoMensagemDeErro
             // 
-            this.DescricaoTextBox.Location = new System.Drawing.Point(120, 98);
-            this.DescricaoTextBox.Name = "DescricaoTextBox";
-            this.DescricaoTextBox.Size = new System.Drawing.Size(510, 20);
-            this.DescricaoTextBox.TabIndex = 6;
-            // 
-            // FamiliaComboBox
-            // 
-            this.FamiliaComboBox.FormattingEnabled = true;
-            this.FamiliaComboBox.Items.AddRange(new object[] {
-            "Chapa",
-            "Tubo",
-            "Plástico"});
-            this.FamiliaComboBox.Location = new System.Drawing.Point(120, 135);
-            this.FamiliaComboBox.Name = "FamiliaComboBox";
-            this.FamiliaComboBox.Size = new System.Drawing.Size(176, 21);
-            this.FamiliaComboBox.TabIndex = 7;
-            // 
-            // SubFamiliaComboBox
-            // 
-            this.SubFamiliaComboBox.FormattingEnabled = true;
-            this.SubFamiliaComboBox.Location = new System.Drawing.Point(120, 175);
-            this.SubFamiliaComboBox.Name = "SubFamiliaComboBox";
-            this.SubFamiliaComboBox.Size = new System.Drawing.Size(176, 21);
-            this.SubFamiliaComboBox.TabIndex = 8;
-            // 
-            // UnidadeDeMedidaComboBox
-            // 
-            this.UnidadeDeMedidaComboBox.FormattingEnabled = true;
-            this.UnidadeDeMedidaComboBox.Location = new System.Drawing.Point(120, 216);
-            this.UnidadeDeMedidaComboBox.Name = "UnidadeDeMedidaComboBox";
-            this.UnidadeDeMedidaComboBox.Size = new System.Drawing.Size(176, 21);
-            this.UnidadeDeMedidaComboBox.TabIndex = 9;
-            // 
-            // InserirButton
-            // 
-            this.InserirButton.Location = new System.Drawing.Point(6, 330);
-            this.InserirButton.Name = "InserirButton";
-            this.InserirButton.Size = new System.Drawing.Size(120, 40);
-            this.InserirButton.TabIndex = 10;
-            this.InserirButton.Text = "Inserir";
-            this.InserirButton.UseVisualStyleBackColor = true;
-            // 
-            // AtualizaButton
-            // 
-            this.AtualizaButton.Location = new System.Drawing.Point(132, 330);
-            this.AtualizaButton.Name = "AtualizaButton";
-            this.AtualizaButton.Size = new System.Drawing.Size(120, 40);
-            this.AtualizaButton.TabIndex = 11;
-            this.AtualizaButton.Text = "Atualizar";
-            this.AtualizaButton.UseVisualStyleBackColor = true;
-            // 
-            // Excluir
-            // 
-            this.Excluir.Location = new System.Drawing.Point(258, 330);
-            this.Excluir.Name = "Excluir";
-            this.Excluir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Excluir.Size = new System.Drawing.Size(120, 40);
-            this.Excluir.TabIndex = 12;
-            this.Excluir.Text = "Excluir";
-            this.Excluir.UseVisualStyleBackColor = true;
-            // 
-            // SairButton
-            // 
-            this.SairButton.Location = new System.Drawing.Point(510, 330);
-            this.SairButton.Name = "SairButton";
-            this.SairButton.Size = new System.Drawing.Size(120, 40);
-            this.SairButton.TabIndex = 13;
-            this.SairButton.Text = "Sair";
-            this.SairButton.UseVisualStyleBackColor = true;
-            this.SairButton.Click += new System.EventHandler(this.SairButton_Click);
-            // 
-            // PesquisarButton
-            // 
-            this.PesquisarButton.Location = new System.Drawing.Point(384, 330);
-            this.PesquisarButton.Name = "PesquisarButton";
-            this.PesquisarButton.Size = new System.Drawing.Size(120, 40);
-            this.PesquisarButton.TabIndex = 14;
-            this.PesquisarButton.Text = "Pesquisar";
-            this.PesquisarButton.UseVisualStyleBackColor = true;
+            this.DescricaoMensagemDeErro.AutoSize = true;
+            this.DescricaoMensagemDeErro.Location = new System.Drawing.Point(117, 82);
+            this.DescricaoMensagemDeErro.Name = "DescricaoMensagemDeErro";
+            this.DescricaoMensagemDeErro.Size = new System.Drawing.Size(29, 13);
+            this.DescricaoMensagemDeErro.TabIndex = 16;
+            this.DescricaoMensagemDeErro.Text = string.Empty;
             // 
             // Form1
             // 
@@ -226,22 +252,24 @@ namespace erpfake
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label UnidadeDeMedidaLabel;
-        private System.Windows.Forms.Label SubFamiliaLabel;
-        private System.Windows.Forms.Label FamiliaLabel;
-        private System.Windows.Forms.Label DescricaoLabel;
-        private System.Windows.Forms.Label CodigoLabel;
-        private System.Windows.Forms.TextBox DescricaoTextBox;
-        private System.Windows.Forms.TextBox CodigoTextBox;
-        private System.Windows.Forms.ComboBox UnidadeDeMedidaComboBox;
-        private System.Windows.Forms.ComboBox SubFamiliaComboBox;
-        private System.Windows.Forms.ComboBox FamiliaComboBox;
-        private System.Windows.Forms.Button PesquisarButton;
-        private System.Windows.Forms.Button SairButton;
-        private System.Windows.Forms.Button Excluir;
-        private System.Windows.Forms.Button AtualizaButton;
-        private System.Windows.Forms.Button InserirButton;
+        private GroupBox groupBox1;
+        private Label UnidadeDeMedidaLabel;
+        private Label SubFamiliaLabel;
+        private Label FamiliaLabel;
+        private Label DescricaoLabel;
+        private Label CodigoLabel;
+        private TextBox DescricaoTextBox;
+        private TextBox CodigoTextBox;
+        private ComboBox UnidadeDeMedidaComboBox;
+        private ComboBox SubFamiliaComboBox;
+        private ComboBox FamiliaComboBox;
+        private Button PesquisarButton;
+        private Button SairButton;
+        private Button Excluir;
+        private Button AtualizaButton;
+        private Button InserirButton;
+        private Label CodigoMensagemDeErro;
+        private Label DescricaoMensagemDeErro;
     }
 }
 
