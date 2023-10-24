@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0DFC551F-9F49-42A6-AE18-B66D79553FE3}</ProjectGuid>
+    <ProjectGuid>{5C6E0392-78EA-4191-8B60-7B7F9B952FF7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ERPFAKE</RootNamespace>
-    <AssemblyName>ERPFAKE</AssemblyName>
+    <RootNamespace>erpfake</RootNamespace>
+    <AssemblyName>erpfake</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

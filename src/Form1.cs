@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ERPFAKE
+namespace erpfake
 {
     public partial class Form1 : Form
     {

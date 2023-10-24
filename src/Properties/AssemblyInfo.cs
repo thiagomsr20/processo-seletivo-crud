@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ERPFAKE")]
+[assembly: AssemblyTitle("erpfake")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ERPFAKE")]
+[assembly: AssemblyProduct("erpfake")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0dfc551f-9f49-42a6-ae18-b66d79553fe3")]
+[assembly: Guid("5c6e0392-78ea-4191-8b60-7b7f9b952ff7")]
 
 // Version information for an assembly consists of the following four values:
 //

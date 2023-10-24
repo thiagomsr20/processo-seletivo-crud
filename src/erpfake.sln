@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34114.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERPFAKE", "ERPFAKE\ERPFAKE.csproj", "{0DFC551F-9F49-42A6-AE18-B66D79553FE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "erpfake", "erpfake.csproj", "{5C6E0392-78EA-4191-8B60-7B7F9B952FF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0DFC551F-9F49-42A6-AE18-B66D79553FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DFC551F-9F49-42A6-AE18-B66D79553FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DFC551F-9F49-42A6-AE18-B66D79553FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DFC551F-9F49-42A6-AE18-B66D79553FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6E0392-78EA-4191-8B60-7B7F9B952FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6E0392-78EA-4191-8B60-7B7F9B952FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6E0392-78EA-4191-8B60-7B7F9B952FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6E0392-78EA-4191-8B60-7B7F9B952FF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AB468730-2665-4787-9BE9-3BAAD57A0CCA}
+		SolutionGuid = {2260C26E-58D9-4FE6-8DDA-7BD1569080A0}
 	EndGlobalSection
 EndGlobal
