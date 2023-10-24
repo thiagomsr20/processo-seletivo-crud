@@ -16,5 +16,28 @@ namespace erpfake
         {
             InitializeComponent();
         }
+
+        private void SairButton_Click(object sender, EventArgs e)
+        {
+            bool[] CondicoesParaFecharJanela =
+            {
+                FamiliaComboBox.SelectedItem is null,
+                SubFamiliaComboBox.SelectedItem is null,
+                string.IsNullOrEmpty(CodigoTextBox.Text),
+                string.IsNullOrEmpty(DescricaoTextBox.Text)
+            };
+
+            if (CondicoesParaFecharJanela.Any(x => x is false))
+            {
+                DialogResult AvisoParaFecharPrograma = MessageBox.Show("Existem campos preenchidos, deseja mesmo fechar o programa?", "Aviso!", MessageBoxButtons.YesNo);
+
+                if (AvisoParaFecharPrograma == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+                return;
+            }
+            this.Close();
+        }
     }
 }
