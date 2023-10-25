@@ -116,8 +116,8 @@ namespace erpfake.Data.Service
 
         public string[] SubFamiliaComboBoxItens()
         {
-            string Query = $@"SELECT * FROM SUBFAMILIA
-                            WHERE FAMILIA='{Form1Service.FamiliaComboBoxItens.Selected}'";
+            string Query = $@"SELECT SUBFAMILIA FROM SUBFAMILIA
+                            WHERE FAMILIA='{Form1Service.FamiliaComboBox.SelectedText}'";
 
             List<string> SubFamilias = new List<string>();
 
@@ -131,15 +131,15 @@ namespace erpfake.Data.Service
                     {
                         while (leitor.Read())
                         {
-                            string Subfamilia = leitor["FAMILIA"].ToString();
+                            string Subfamilia = leitor["SUBFAMILIA"].ToString();
                             SubFamilias.Add(Subfamilia);
                         }
                     }
                 }
             }
 
-            string[] arrayDeFamilias = SubFamilias.ToArray();
-            return arrayDeFamilias;
+            string[] ArrayDeSubFamiliasFamilias = SubFamilias.ToArray();
+            return ArrayDeSubFamiliasFamilias;
         }
     }
 }
