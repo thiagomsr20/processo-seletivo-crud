@@ -1,4 +1,5 @@
 ﻿
+using erpfake.Data.Service;
 using System.Windows.Forms;
 
 namespace erpfake
@@ -167,6 +168,11 @@ namespace erpfake
             // 
             this.FamiliaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FamiliaComboBox.FormattingEnabled = true;
+
+            // Puxar elementos do banco
+            string[] Familias = ServicoSQL.FamiliaComboBoxItens();
+            this.FamiliaComboBox.Items.AddRange(Familias);
+
             this.FamiliaComboBox.Location = new System.Drawing.Point(120, 135);
             this.FamiliaComboBox.Name = "FamiliaComboBox";
             this.FamiliaComboBox.Size = new System.Drawing.Size(176, 21);
@@ -252,24 +258,24 @@ namespace erpfake
 
         #endregion
 
-        private GroupBox groupBox1;
-        private Label UnidadeDeMedidaLabel;
-        private Label SubFamiliaLabel;
-        private Label FamiliaLabel;
-        private Label DescricaoLabel;
-        private Label CodigoLabel;
-        private TextBox DescricaoTextBox;
-        private TextBox CodigoTextBox;
-        private ComboBox UnidadeDeMedidaComboBox;
-        private ComboBox SubFamiliaComboBox;
-        private ComboBox FamiliaComboBox;
-        private Button PesquisarButton;
-        private Button SairButton;
-        private Button Excluir;
-        private Button AtualizaButton;
-        private Button InserirButton;
-        private Label CodigoMensagemDeErro;
-        private Label DescricaoMensagemDeErro;
+        public GroupBox groupBox1;
+        public Label UnidadeDeMedidaLabel;
+        public Label SubFamiliaLabel;
+        public Label FamiliaLabel;
+        public Label DescricaoLabel;
+        public Label CodigoLabel;
+        public TextBox DescricaoTextBox;
+        public TextBox CodigoTextBox;
+        public ComboBox UnidadeDeMedidaComboBox;
+        public ComboBox SubFamiliaComboBox;
+        public ComboBox FamiliaComboBox;
+        public Button PesquisarButton;
+        public Button SairButton;
+        public Button Excluir;
+        public Button AtualizaButton;
+        public Button InserirButton;
+        public Label CodigoMensagemDeErro;
+        public Label DescricaoMensagemDeErro;
     }
 }
 

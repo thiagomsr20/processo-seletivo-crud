@@ -14,12 +14,12 @@ namespace erpfake
 {
     public partial class Form1 : Form
     {
+        private SqlService ServicoSQL;
         public Form1()
         {
             InitializeComponent();
+            ServicoSQL = new SqlService(this);
         }
-
-        public SqlService ServicoSQL = new SqlService();
 
         private void SairButton_Click(object sender, EventArgs e)
         {
