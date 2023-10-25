@@ -9,11 +9,6 @@ namespace erpfake.Data.Service
 {
     public class SqlService
     {
-        // Serviçoes para permitirem acesso a atributos de Form1
-        private Form1 Form1Service;
-        public SqlService(Form1 Form1) => Form1Service = Form1;
-
-
         private const string StringDeConexao = @"Data Source=THIAGOPC;integrated security=SSPI;initial catalog=TESTE;";
         private bool InvalidoParaInsercaoNoBanco(Material Obj)
         {
@@ -114,10 +109,10 @@ namespace erpfake.Data.Service
             return arrayDeFamilias;
         }
 
-        public string[] SubFamiliaComboBoxItens()
+        public string[] SubFamiliaComboBoxItens(string Familia)
         {
             string Query = $@"SELECT SUBFAMILIA FROM SUBFAMILIA
-                            WHERE FAMILIA='{Form1Service.FamiliaComboBox.SelectedText}'";
+                            WHERE FAMILIA='{Familia}'";
 
             List<string> SubFamilias = new List<string>();
 

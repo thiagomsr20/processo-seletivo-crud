@@ -24,6 +24,8 @@ namespace erpfake
             base.Dispose(disposing);
         }
 
+        public SqlService ServicoSQLSemParametro = new SqlService();
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -163,16 +165,12 @@ namespace erpfake
             this.SubFamiliaComboBox.Name = "SubFamiliaComboBox";
             this.SubFamiliaComboBox.Size = new System.Drawing.Size(176, 21);
             this.SubFamiliaComboBox.TabIndex = 8;
+            this.SubFamiliaComboBox.SelectedIndexChanged += new System.EventHandler(this.SubFamiliaComboBox_SelectedIndexChanged);
             // 
             // FamiliaComboBox
             // 
             this.FamiliaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FamiliaComboBox.FormattingEnabled = true;
-
-            // Puxar elementos do banco
-            string[] Familias = ServicoSQL.FamiliaComboBoxItens();
-            this.FamiliaComboBox.Items.AddRange(Familias);
-
             this.FamiliaComboBox.Location = new System.Drawing.Point(120, 135);
             this.FamiliaComboBox.Name = "FamiliaComboBox";
             this.FamiliaComboBox.Size = new System.Drawing.Size(176, 21);

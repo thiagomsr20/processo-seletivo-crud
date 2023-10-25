@@ -14,11 +14,12 @@ namespace erpfake
 {
     public partial class Form1 : Form
     {
-        private SqlService ServicoSQL;
+        public SqlService ServicoSQL;
         public Form1()
         {
             InitializeComponent();
-            ServicoSQL = new SqlService(this);
+            string[] familias = ServicoSQLSemParametro.FamiliaComboBoxItens();
+            FamiliaComboBox.Items.AddRange(familias);
         }
 
         private void SairButton_Click(object sender, EventArgs e)
@@ -56,6 +57,20 @@ namespace erpfake
             };
 
             ServicoSQL.Inserir(NovoMaterial);
+        }
+
+        private void SubFamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SubFamiliaComboBox.Items.Clear();
+
+            if (FamiliaComboBox.SelectedIndex != -1)
+            {
+                string familiaSelecionada = FamiliaComboBox.SelectedItem.ToString();
+
+                string[] SubFamilias = ServicoSQL.SubFamiliaComboBoxItens(familiaSelecionada);
+
+                SubFamiliaComboBox.Items.AddRange(SubFamilias);
+            }
         }
     }
 }
