@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using erpfake.Data.Service;
+using erpfake.Model;
 
 namespace erpfake
 {
@@ -16,6 +18,8 @@ namespace erpfake
         {
             InitializeComponent();
         }
+
+        public SqlService ServicoSQL = new SqlService();
 
         private void SairButton_Click(object sender, EventArgs e)
         {
@@ -40,5 +44,18 @@ namespace erpfake
             this.Close();
         }
 
+        private void InserirButton_Click(object sender, EventArgs e)
+        {
+            Material NovoMaterial = new Material()
+            {
+                Codigo = Convert.ToInt32(CodigoTextBox.Text),
+                Descricao = DescricaoTextBox.Text,
+                Familia = FamiliaComboBox.SelectedText,
+                SubFamilia = SubFamiliaComboBox.SelectedText,
+                UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedText
+            };
+
+            ServicoSQL.Inserir(NovoMaterial);
+        }
     }
 }

@@ -32,6 +32,8 @@ namespace erpfake
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DescricaoMensagemDeErro = new System.Windows.Forms.Label();
+            this.CodigoMensagemDeErro = new System.Windows.Forms.Label();
             this.PesquisarButton = new System.Windows.Forms.Button();
             this.SairButton = new System.Windows.Forms.Button();
             this.Excluir = new System.Windows.Forms.Button();
@@ -47,8 +49,6 @@ namespace erpfake
             this.FamiliaLabel = new System.Windows.Forms.Label();
             this.DescricaoLabel = new System.Windows.Forms.Label();
             this.CodigoLabel = new System.Windows.Forms.Label();
-            this.CodigoMensagemDeErro = new System.Windows.Forms.Label();
-            this.DescricaoMensagemDeErro = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +77,22 @@ namespace erpfake
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados cadastrais";
+            // 
+            // DescricaoMensagemDeErro
+            // 
+            this.DescricaoMensagemDeErro.AutoSize = true;
+            this.DescricaoMensagemDeErro.Location = new System.Drawing.Point(117, 82);
+            this.DescricaoMensagemDeErro.Name = "DescricaoMensagemDeErro";
+            this.DescricaoMensagemDeErro.Size = new System.Drawing.Size(0, 13);
+            this.DescricaoMensagemDeErro.TabIndex = 16;
+            // 
+            // CodigoMensagemDeErro
+            // 
+            this.CodigoMensagemDeErro.AutoSize = true;
+            this.CodigoMensagemDeErro.Location = new System.Drawing.Point(117, 41);
+            this.CodigoMensagemDeErro.Name = "CodigoMensagemDeErro";
+            this.CodigoMensagemDeErro.Size = new System.Drawing.Size(0, 13);
+            this.CodigoMensagemDeErro.TabIndex = 15;
             // 
             // PesquisarButton
             // 
@@ -124,6 +140,7 @@ namespace erpfake
             this.InserirButton.TabIndex = 10;
             this.InserirButton.Text = "Inserir";
             this.InserirButton.UseVisualStyleBackColor = true;
+            this.InserirButton.Click += new System.EventHandler(this.InserirButton_Click);
             // 
             // UnidadeDeMedidaComboBox
             // 
@@ -158,6 +175,7 @@ namespace erpfake
             // DescricaoTextBox
             // 
             this.DescricaoTextBox.Location = new System.Drawing.Point(120, 98);
+            this.DescricaoTextBox.MaxLength = 100;
             this.DescricaoTextBox.Name = "DescricaoTextBox";
             this.DescricaoTextBox.Size = new System.Drawing.Size(510, 20);
             this.DescricaoTextBox.TabIndex = 6;
@@ -213,24 +231,6 @@ namespace erpfake
             this.CodigoLabel.Size = new System.Drawing.Size(43, 13);
             this.CodigoLabel.TabIndex = 0;
             this.CodigoLabel.Text = "Código:";
-            // 
-            // CodigoMensagemDeErro
-            // 
-            this.CodigoMensagemDeErro.AutoSize = true;
-            this.CodigoMensagemDeErro.Location = new System.Drawing.Point(117, 41);
-            this.CodigoMensagemDeErro.Name = "CodigoMensagemDeErro";
-            this.CodigoMensagemDeErro.Size = new System.Drawing.Size(29, 13);
-            this.CodigoMensagemDeErro.TabIndex = 15;
-            this.CodigoMensagemDeErro.Text = string.Empty;
-            // 
-            // DescricaoMensagemDeErro
-            // 
-            this.DescricaoMensagemDeErro.AutoSize = true;
-            this.DescricaoMensagemDeErro.Location = new System.Drawing.Point(117, 82);
-            this.DescricaoMensagemDeErro.Name = "DescricaoMensagemDeErro";
-            this.DescricaoMensagemDeErro.Size = new System.Drawing.Size(29, 13);
-            this.DescricaoMensagemDeErro.TabIndex = 16;
-            this.DescricaoMensagemDeErro.Text = string.Empty;
             // 
             // Form1
             // 
