@@ -175,6 +175,7 @@ namespace erpfake
             this.FamiliaComboBox.Name = "FamiliaComboBox";
             this.FamiliaComboBox.Size = new System.Drawing.Size(176, 21);
             this.FamiliaComboBox.TabIndex = 7;
+            this.FamiliaComboBox.SelectedIndexChanged += new System.EventHandler(this.FamiliaComboBox_SelectedIndexChanged);
             // 
             // DescricaoTextBox
             // 

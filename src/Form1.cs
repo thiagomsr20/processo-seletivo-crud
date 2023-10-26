@@ -14,7 +14,7 @@ namespace erpfake
 {
     public partial class Form1 : Form
     {
-        public SqlService ServicoSQL;
+        public SqlService ServicoSQL = new SqlService();
         public Form1()
         {
             InitializeComponent();
@@ -61,9 +61,12 @@ namespace erpfake
 
         private void SubFamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SubFamiliaComboBox.Items.Clear();
 
-            if (FamiliaComboBox.SelectedIndex != -1)
+        }
+
+        private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FamiliaComboBox.SelectedItem != null)
             {
                 string familiaSelecionada = FamiliaComboBox.SelectedItem.ToString();
 
