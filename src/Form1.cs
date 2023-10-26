@@ -47,16 +47,28 @@ namespace erpfake
 
         private void InserirButton_Click(object sender, EventArgs e)
         {
-            Material NovoMaterial = new Material()
+            Material NovoMaterial = new Material();
+
+            int Codigo;
+            try
             {
-                Codigo = Convert.ToInt32(CodigoTextBox.Text),
-                Descricao = DescricaoTextBox.Text,
-                Familia = FamiliaComboBox.SelectedItem.ToString(),
-                SubFamilia = SubFamiliaComboBox.SelectedItem.ToString(),
-                UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString()
-            };
+                Codigo = Convert.ToInt32(CodigoTextBox.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("O código só poder um numero inteiro, ");
+                CodigoTextBox.Clear();
+                return;
+            }
+
+            NovoMaterial.Descricao = DescricaoTextBox.Text;
+            NovoMaterial.Familia = FamiliaComboBox.SelectedItem.ToString();
+            NovoMaterial.SubFamilia = SubFamiliaComboBox.SelectedItem.ToString();
+            NovoMaterial.UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString();
 
             ServicoSQL.Inserir(NovoMaterial);
+
+            MessageBox.Show("Material cadastrado");
         }
 
         private void SubFamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
