@@ -127,7 +127,7 @@ namespace erpfake.Data.Service
 		                                UNIDADE_DE_MEDIDA = '{Obj.UnidadeDeMedida}'
 	                                WHERE CODIGO = {Obj.Codigo};
 
-	                                UPDATE CODIGO
+	                                UPDATE CODIGOS
 	                                SET DATADEMODIFICACAO = GETDATE()
 	                                WHERE CODIGOS = {Obj.Codigo};
 
