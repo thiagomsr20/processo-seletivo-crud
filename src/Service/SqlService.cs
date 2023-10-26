@@ -28,12 +28,37 @@ namespace erpfake.Data.Service
 
             return ModeloValido;
         }
+        public bool MaterialJaCadastrado(int ID)
+        {
+            bool MaterialCadastrado = false;
+            string Query = $@"SELECT * FROM CODIGO
+                            WHERE CODIGO ='{ID}'";
+
+            using (SqlConnection cnn = new SqlConnection(StringDeConexao))
+            {
+                cnn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(Query, cnn))
+                {
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        if (leitor.HasRows)
+                        {
+                            MaterialCadastrado = true;
+                        }
+                    }
+                }
+            }
+
+            return MaterialCadastrado;
+        }
+
 
         public void Inserir(Material Obj)
         {
             if (InvalidoParaInsercaoNoBanco(Obj))
             {
-                throw new ArgumentException("Elemento não é válido, verifique se há atributos nulos");
+                throw new ArgumentException("Material não é válido, verifique se há atributos nulos");
             }
 
             using (SqlConnection cnn = new SqlConnection(StringDeConexao))
@@ -66,20 +91,10 @@ namespace erpfake.Data.Service
                 cmd.ExecuteNonQuery();
             }
         }
-         
-        public void Atualizar(string Query)
+
+        public void Pesquisar(int ID)
         {
-
-        }
-
-        public void Deletar(string Query)
-        {
-
-        }
-
-        public void Pesquisar(string Query)
-        {
-
+            string Query = $@"SELECT";
         }
 
         public string[] FamiliaComboBoxItens()

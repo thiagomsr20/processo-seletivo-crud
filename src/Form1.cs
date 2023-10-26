@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using erpfake.Cadastro.Service;
 using erpfake.Data.Service;
 using erpfake.Model;
 
@@ -14,10 +15,15 @@ namespace erpfake
 {
     public partial class Form1 : Form
     {
-        public SqlService ServicoSQL = new SqlService();
+        public SqlService SqlService = new SqlService();
+
+        private CadastroService CadastroService;
         public Form1()
         {
             InitializeComponent();
+            CadastroService = new CadastroService(this);
+
+            // Inicializar opção na comboBox da Família
             string[] familias = ServicoSQLSemParametro.FamiliaComboBoxItens();
             FamiliaComboBox.Items.AddRange(familias);
         }
@@ -45,35 +51,18 @@ namespace erpfake
             this.Close();
         }
 
-        private void InserirButton_Click(object sender, EventArgs e)
+        private void CodigoTextBox_TextChanged(object sender, EventArgs e)
         {
-            Material NovoMaterial = new Material();
 
-            int Codigo;
-            try
-            {
-                Codigo = Convert.ToInt32(CodigoTextBox.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("O código só poder um numero inteiro, ");
-                CodigoTextBox.Clear();
-                return;
-            }
-
-            NovoMaterial.Descricao = DescricaoTextBox.Text;
-            NovoMaterial.Familia = FamiliaComboBox.SelectedItem.ToString();
-            NovoMaterial.SubFamilia = SubFamiliaComboBox.SelectedItem.ToString();
-            NovoMaterial.UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString();
-
-            ServicoSQL.Inserir(NovoMaterial);
-
-            MessageBox.Show("Material cadastrado");
         }
 
-        private void SubFamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void InserirButton_Click(object sender, EventArgs e)
         {
-
+            if (SqlService.MaterialJaCadastrado(589))
+            {
+                MessageBox.Show("Item já cadastrado no banco");
+                return;
+            }
         }
 
         private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,10 +72,15 @@ namespace erpfake
             {
                 string familiaSelecionada = FamiliaComboBox.SelectedItem.ToString();
 
-                string[] SubFamilias = ServicoSQL.SubFamiliaComboBoxItens(familiaSelecionada);
+                string[] SubFamilias = SqlService.SubFamiliaComboBoxItens(familiaSelecionada);
 
                 SubFamiliaComboBox.Items.AddRange(SubFamilias);
             }
+        }
+
+        private void PesquisarButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

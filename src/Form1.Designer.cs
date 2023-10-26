@@ -105,6 +105,7 @@ namespace erpfake
             this.PesquisarButton.TabIndex = 14;
             this.PesquisarButton.Text = "Pesquisar";
             this.PesquisarButton.UseVisualStyleBackColor = true;
+            this.PesquisarButton.Click += new System.EventHandler(this.PesquisarButton_Click);
             // 
             // SairButton
             // 
@@ -150,8 +151,8 @@ namespace erpfake
             this.UnidadeDeMedidaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UnidadeDeMedidaComboBox.FormattingEnabled = true;
             this.UnidadeDeMedidaComboBox.Items.AddRange(new object[] {
-            "mm (Milimetros)",
-            "in (Polegadas)"});
+            "Milimetro",
+            "Polegada"});
             this.UnidadeDeMedidaComboBox.Location = new System.Drawing.Point(120, 216);
             this.UnidadeDeMedidaComboBox.Name = "UnidadeDeMedidaComboBox";
             this.UnidadeDeMedidaComboBox.Size = new System.Drawing.Size(176, 21);
@@ -165,7 +166,6 @@ namespace erpfake
             this.SubFamiliaComboBox.Name = "SubFamiliaComboBox";
             this.SubFamiliaComboBox.Size = new System.Drawing.Size(176, 21);
             this.SubFamiliaComboBox.TabIndex = 8;
-            this.SubFamiliaComboBox.SelectedIndexChanged += new System.EventHandler(this.SubFamiliaComboBox_SelectedIndexChanged);
             // 
             // FamiliaComboBox
             // 
@@ -191,6 +191,7 @@ namespace erpfake
             this.CodigoTextBox.Name = "CodigoTextBox";
             this.CodigoTextBox.Size = new System.Drawing.Size(176, 20);
             this.CodigoTextBox.TabIndex = 5;
+            this.CodigoTextBox.TextChanged += new System.EventHandler(this.CodigoTextBox_TextChanged);
             // 
             // UnidadeDeMedidaLabel
             // 
