@@ -10,24 +10,6 @@ namespace erpfake.Data.Service
     public class SqlService
     {
         private const string StringDeConexao = @"Data Source=THIAGOPC;integrated security=SSPI;initial catalog=TESTE;";
-        private bool InvalidoParaInsercaoNoBanco(Material Obj)
-        {
-            bool ModeloValido = false;
-
-            List<bool> AtributosNulosNoModelo = new List<bool>() {
-                string.IsNullOrEmpty(Obj.Descricao),
-                string.IsNullOrEmpty(Obj.Familia),
-                string.IsNullOrEmpty(Obj.SubFamilia),
-                string.IsNullOrEmpty(Obj.UnidadeDeMedida)
-            };
-
-            if (AtributosNulosNoModelo.Any(x => x is true))
-            {
-                ModeloValido = true;
-            }
-
-            return ModeloValido;
-        }
         public bool MaterialJaCadastrado(int ID)
         {
             bool MaterialCadastrado = false;
@@ -53,14 +35,8 @@ namespace erpfake.Data.Service
             return MaterialCadastrado;
         }
 
-
         public void Inserir(Material Obj)
         {
-            if (InvalidoParaInsercaoNoBanco(Obj))
-            {
-                throw new ArgumentException("Material não é válido, verifique se há atributos nulos");
-            }
-
             using (SqlConnection cnn = new SqlConnection(StringDeConexao))
             {
                 // Inserção em ambas tabelas "MATERIAL" e "CODIGO" usando transação, se ocorrer erro na inserção de uma, cancelar a da outra para não haver erro

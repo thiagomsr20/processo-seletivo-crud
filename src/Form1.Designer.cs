@@ -24,8 +24,6 @@ namespace erpfake
             base.Dispose(disposing);
         }
 
-        public SqlService ServicoSQLSemParametro = new SqlService();
-
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -191,7 +189,7 @@ namespace erpfake
             this.CodigoTextBox.Name = "CodigoTextBox";
             this.CodigoTextBox.Size = new System.Drawing.Size(176, 20);
             this.CodigoTextBox.TabIndex = 5;
-            this.CodigoTextBox.TextChanged += new System.EventHandler(this.CodigoTextBox_TextChanged);
+            this.CodigoTextBox.KeyPress += new KeyPressEventHandler(this.CodigoTextBox_KeyPress);
             // 
             // UnidadeDeMedidaLabel
             // 

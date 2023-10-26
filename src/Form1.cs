@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using erpfake.Cadastro.Service;
 using erpfake.Data.Service;
 using erpfake.Model;
 
@@ -16,15 +15,11 @@ namespace erpfake
     public partial class Form1 : Form
     {
         public SqlService SqlService = new SqlService();
-
-        private CadastroService CadastroService;
         public Form1()
         {
             InitializeComponent();
-            CadastroService = new CadastroService(this);
-
-            // Inicializar opção na comboBox da Família
-            string[] familias = ServicoSQLSemParametro.FamiliaComboBoxItens();
+            // Inicializar opção no comboBox da Família
+            string[] familias = SqlService.FamiliaComboBoxItens();
             FamiliaComboBox.Items.AddRange(familias);
         }
 
@@ -51,18 +46,40 @@ namespace erpfake
             this.Close();
         }
 
-        private void CodigoTextBox_TextChanged(object sender, EventArgs e)
+        private void CodigoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back){
+                e.Handled = true;
+                CodigoMensagemDeErro.Text = "Apenas números inteiros válidos";
+            }
+            else{
+                CodigoMensagemDeErro.Text = "";
+            }
         }
+
 
         private void InserirButton_Click(object sender, EventArgs e)
         {
-            if (SqlService.MaterialJaCadastrado(589))
+            Material MaterialParaCadastro = new Material();
+            MaterialParaCadastro.Codigo = CodigoTextBox.Text.Length == 0 ? -1 : Convert.ToInt32(CodigoTextBox.Text);
+            if(MaterialParaCadastro.Codigo == -1)
             {
-                MessageBox.Show("Item já cadastrado no banco");
+                MessageBox.Show($"Necessário código de material para cadastro");
                 return;
             }
+
+            MaterialParaCadastro.Descricao = DescricaoTextBox.Text;
+            MaterialParaCadastro.Familia = FamiliaComboBox.SelectedItem.ToString();
+            MaterialParaCadastro.SubFamilia = SubFamiliaComboBox.SelectedItem.ToString();
+            MaterialParaCadastro.UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString();
+
+            if (SqlService.MaterialJaCadastrado(MaterialParaCadastro.Codigo))
+            {
+                MessageBox.Show("Material já cadastrado no banco");
+                return;
+            }
+            SqlService.Inserir(MaterialParaCadastro);
+            MessageBox.Show("Material cadastrado com sucesso");
         }
 
         private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
