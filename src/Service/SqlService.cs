@@ -13,7 +13,7 @@ namespace erpfake.Data.Service
         public bool MaterialJaCadastrado(int ID)
         {
             bool MaterialCadastrado = false;
-            string Query = $@"SELECT * FROM CODIGO
+            string Query = $@"SELECT * FROM CODIGOS
                             WHERE CODIGO ='{ID}'";
 
             using (SqlConnection cnn = new SqlConnection(StringDeConexao))
@@ -47,7 +47,7 @@ namespace erpfake.Data.Service
                                         INSERT INTO MATERIAL (CODIGO,DESCRICAO,FAMILIA,SUBFAMILIA,UNIDADE_DE_MEDIDA)
                                         VALUES ('{Obj.Codigo}','{Obj.Descricao}','{Obj.Familia}','{Obj.SubFamilia}','{Obj.UnidadeDeMedida}');
     
-                                        INSERT INTO CODIGO (CODIGO, DATADECADASTRO)
+                                        INSERT INTO CODIGOS (CODIGO, DATADECADASTRO)
                                         VALUES ('{Obj.Codigo}', GETDATE());
     
                                         COMMIT;
@@ -70,7 +70,7 @@ namespace erpfake.Data.Service
 
         public void Deletar(int ID)
         {
-            string Query1 = $"DELETE FROM CODIGO WHERE CODIGO = {ID};";
+            string Query1 = $"DELETE FROM CODIGOS WHERE CODIGO = {ID};";
             string Query2 = $"DELETE FROM MATERIAL WHERE CODIGO = {ID};";
 
             using (SqlConnection cnn = new SqlConnection(StringDeConexao))
@@ -89,7 +89,7 @@ namespace erpfake.Data.Service
         {
             Material Material = new Material();
             string Query = $@"SELECT CODIGO, DESCRICAO, FAMILIA, SUBFAMILIA, UNIDADE_DE_MEDIDA FROM MATERIAL
-                                WHERE CODIGO = @ID;";
+                                WHERE CODIGO = {ID};";
 
             using (SqlConnection cnn = new SqlConnection(StringDeConexao))
             {
@@ -97,7 +97,6 @@ namespace erpfake.Data.Service
 
                 using (SqlCommand cmd = new SqlCommand(Query, cnn))
                 {
-                    cmd.Parameters.AddWithValue("@ID", ID); // Define o parâmetro @ID com o valor recebido
 
                     using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
@@ -116,6 +115,51 @@ namespace erpfake.Data.Service
             return Material;
         }
 
+        public void Atualizar(Material Obj)
+        {
+            string Query = $@"BEGIN TRANSACTION;
+
+                                BEGIN TRY
+	                                UPDATE MATERIAL
+	                                SET DESCRICAO = '{Obj.Descricao}',
+		                                FAMILIA = '{Obj.Familia}',
+		                                SUBFAMILIA = '{Obj.SubFamilia}',
+		                                UNIDADE_DE_MEDIDA = '{Obj.UnidadeDeMedida}'
+	                                WHERE CODIGO = {Obj.Codigo};
+
+	                                UPDATE CODIGO
+	                                SET DATADEMODIFICACAO = GETDATE()
+	                                WHERE CODIGOS = {Obj.Codigo};
+
+	                                COMMIT;
+                                END TRY
+
+                                BEGIN CATCH
+	                                ROLLBACK;
+                                END CATCH;";
+
+            using (SqlConnection connection = new SqlConnection(StringDeConexao))
+            {
+                connection.Open();
+
+                // Crie um comando SQL
+                using (SqlCommand command = new SqlCommand(Query, connection))
+                {
+                    // Execute a instrução de atualização
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // rowsAffected conterá o número de registros afetados
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine($"{rowsAffected} registro(s) atualizado(s) com sucesso.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nenhum registro foi atualizado.");
+                    }
+                }
+            }
+        }
 
         public string[] FamiliaComboBoxItens()
         {

@@ -72,12 +72,20 @@ namespace erpfake
 
         private void InserirButton_Click(object sender, EventArgs e)
         {
+            bool[] VaidacaoDeCampoVazioOuNulo =
+            {
+                string.IsNullOrEmpty(DescricaoTextBox.Text),
+                FamiliaComboBox.SelectedItem is null,
+                SubFamiliaComboBox.SelectedItem is null,
+                UnidadeDeMedidaComboBox.SelectedItem is null
+            };
+
             Material MaterialParaCadastro = new Material();
             MaterialParaCadastro.Codigo = CodigoTextBox.Text.Length == 0 ? -1 : Convert.ToInt32(CodigoTextBox.Text);
-            if (string.IsNullOrEmpty(DescricaoTextBox.Text) || string.IsNullOrEmpty(FamiliaComboBox.SelectedItem.ToString()) ||
-                string.IsNullOrEmpty(SubFamiliaComboBox.SelectedItem.ToString()) || string.IsNullOrEmpty(UnidadeDeMedidaComboBox.SelectedItem.ToString()))
+
+            if (VaidacaoDeCampoVazioOuNulo.Any(x => x is true))
             {
-                MessageBox.Show("Preencha todos os campos para cadastrar uma material");
+                MessageBox.Show("Preencha todos os campos para cadastrar um material");
                 return;
             }
             else if (MaterialParaCadastro.Codigo == -1)
@@ -133,21 +141,7 @@ namespace erpfake
                 UnidadeDeMedidaComboBox.SelectedItem = Material.UnidadeDeMedida;
                 return;
             }
-            MessageBox.Show("Material não cadastrado no banco de dados, tente outro ID");
-            return;
-        }
-
-        private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SubFamiliaComboBox.Items.Clear();
-            if (FamiliaComboBox.SelectedItem != null)
-            {
-                string familiaSelecionada = FamiliaComboBox.SelectedItem.ToString();
-
-                string[] SubFamilias = SqlService.SubFamiliaComboBoxItens(familiaSelecionada);
-
-                SubFamiliaComboBox.Items.AddRange(SubFamilias);
-            }
+            MessageBox.Show($"Cadastro: ({MaterialID}) inexistente");
         }
 
         private void Excluir_Click(object sender, EventArgs e)
@@ -165,12 +159,76 @@ namespace erpfake
                 if (AvisoParaDeletarUmCadastro == DialogResult.Yes)
                 {
                     SqlService.Deletar(MaterialID);
-                    AvisoParaDeletarUmCadastro = MessageBox.Show("Material excluído com sucesso"); ;
+
+                    // Limpar configurador de material
+                    CodigoTextBox.Clear();
+                    DescricaoTextBox.Clear();
+                    FamiliaComboBox.SelectedIndex = -1;
+                    SubFamiliaComboBox.SelectedIndex = -1;
+                    UnidadeDeMedidaComboBox.SelectedIndex = -1;
+
+                    AvisoParaDeletarUmCadastro = MessageBox.Show("Material excluído com sucesso");
+
                 }
                 return;
             }
-            MessageBox.Show($"Não existe cadastro do material: {MaterialID}");
-            return;
+
+            MessageBox.Show($"Cadastro: ({MaterialID}) inexistente");
+        }
+
+        private void AtualizaButton_Click(object sender, EventArgs e)
+        {
+            int MaterialID = CodigoTextBox.Text.Length == 0 ? -1 : Convert.ToInt32(CodigoTextBox.Text);
+
+            bool[] VaidacaoDeCampoVazioOuNulo =
+            {
+                string.IsNullOrEmpty(DescricaoTextBox.Text),
+                FamiliaComboBox.SelectedItem is null,
+                SubFamiliaComboBox.SelectedItem is null,
+                UnidadeDeMedidaComboBox.SelectedItem is null
+            };
+
+            if (VaidacaoDeCampoVazioOuNulo.Any(x => x is true))
+            {
+                MessageBox.Show("Preencha todos os campos para cadastrar um material");
+                return;
+            }
+            else if (MaterialID == -1)
+            {
+                MessageBox.Show("Necessário código do material para atualizar");
+                return;
+            }
+            else if (SqlService.MaterialJaCadastrado(MaterialID))
+            {
+                Material NovoMaterial = new Material();
+
+                NovoMaterial.Codigo = MaterialID;
+                NovoMaterial.Descricao = DescricaoTextBox.Text;
+                NovoMaterial.Familia = FamiliaComboBox.SelectedItem.ToString();
+                NovoMaterial.SubFamilia = SubFamiliaComboBox.SelectedItem.ToString();
+                NovoMaterial.UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString();
+
+                SqlService.Atualizar(NovoMaterial);
+
+                MessageBox.Show("Material atualizado com sucesso");
+            }
+            else
+            {
+                MessageBox.Show($"Cadastro: ({MaterialID}) inexistente");
+            }
+        }
+
+        private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SubFamiliaComboBox.Items.Clear();
+            if (FamiliaComboBox.SelectedItem != null)
+            {
+                string familiaSelecionada = FamiliaComboBox.SelectedItem.ToString();
+
+                string[] SubFamilias = SqlService.SubFamiliaComboBoxItens(familiaSelecionada);
+
+                SubFamiliaComboBox.Items.AddRange(SubFamilias);
+            }
         }
     }
 }

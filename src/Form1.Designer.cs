@@ -202,6 +202,7 @@ namespace erpfake
             this.AtualizaButton.TabIndex = 11;
             this.AtualizaButton.Text = "Atualizar";
             this.AtualizaButton.UseVisualStyleBackColor = true;
+            this.AtualizaButton.Click += new System.EventHandler(this.AtualizaButton_Click);
             // 
             // InserirButton
             // 
