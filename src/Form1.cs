@@ -59,11 +59,10 @@ namespace erpfake
 
         private void DescricaoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (DescricaoTextBox.Text.Length > 100)
+            if (DescricaoTextBox.Text.Length >= 100)
             {
                 e.Handled = true;
                 DescricaoMensagemDeErro.Text = "Limite de caracteres atingido (100)";
-                return;
             }
             else
             {
@@ -108,12 +107,12 @@ namespace erpfake
             groupBox2.Visible = true;
             MessageBox.Show("Material cadastrado com sucesso");
 
-            //// Limpar configurador de material
-            //CodigoTextBox.Clear();
-            //DescricaoTextBox.Clear();
-            //FamiliaComboBox.SelectedIndex = -1;
-            //SubFamiliaComboBox.SelectedIndex = -1;
-            //UnidadeDeMedidaComboBox.SelectedIndex = -1;
+            // Limpar configurador de material
+            CodigoTextBox.Clear();
+            DescricaoTextBox.Clear();
+            FamiliaComboBox.SelectedIndex = -1;
+            SubFamiliaComboBox.SelectedIndex = -1;
+            UnidadeDeMedidaComboBox.SelectedIndex = -1;
         }
 
         private void PesquisarButton_Click(object sender, EventArgs e)
