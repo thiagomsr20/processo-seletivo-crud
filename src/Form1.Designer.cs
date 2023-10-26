@@ -50,11 +50,13 @@ namespace erpfake
             this.FamiliaLabel = new System.Windows.Forms.Label();
             this.DescricaoLabel = new System.Windows.Forms.Label();
             this.CodigoLabel = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.DescricaoMensagemDeErro);
             this.groupBox1.Controls.Add(this.CodigoMensagemDeErro);
             this.groupBox1.Controls.Add(this.PesquisarButton);
@@ -189,7 +191,7 @@ namespace erpfake
             this.CodigoTextBox.Name = "CodigoTextBox";
             this.CodigoTextBox.Size = new System.Drawing.Size(176, 20);
             this.CodigoTextBox.TabIndex = 5;
-            this.CodigoTextBox.KeyPress += new KeyPressEventHandler(this.CodigoTextBox_KeyPress);
+            this.CodigoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CodigoTextBox_KeyPress);
             // 
             // UnidadeDeMedidaLabel
             // 
@@ -236,6 +238,16 @@ namespace erpfake
             this.CodigoLabel.TabIndex = 0;
             this.CodigoLabel.Text = "Código:";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(346, 138);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(284, 172);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Último item cadastrado";
+            this.groupBox2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +286,7 @@ namespace erpfake
         public Button InserirButton;
         public Label CodigoMensagemDeErro;
         public Label DescricaoMensagemDeErro;
+        private GroupBox groupBox2;
     }
 }
 

@@ -85,7 +85,25 @@ namespace erpfake
             MaterialParaCadastro.UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString();
 
             SqlService.Inserir(MaterialParaCadastro);
+
+            groupBox2.Visible = true;
             MessageBox.Show("Material cadastrado com sucesso");
+
+            
+
+            CodigoTextBox.Clear();
+            DescricaoTextBox.Clear();
+            FamiliaComboBox.SelectedIndex = -1;
+            SubFamiliaComboBox.SelectedIndex = -1;
+            UnidadeDeMedidaComboBox.SelectedIndex = -1;
+        }
+
+        private void PesquisarButton_Click(object sender, EventArgs e)
+        {
+            if(SqlService.MaterialJaCadastrado(589))
+            {
+                SqlService.Pesquisar(589);
+            }
         }
 
         private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,9 +119,5 @@ namespace erpfake
             }
         }
 
-        private void PesquisarButton_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

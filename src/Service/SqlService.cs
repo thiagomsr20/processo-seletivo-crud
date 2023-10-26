@@ -47,8 +47,8 @@ namespace erpfake.Data.Service
                                         INSERT INTO MATERIAL (CODIGO,DESCRICAO,FAMILIA,SUBFAMILIA,UNIDADE_DE_MEDIDA)
                                         VALUES ('{Obj.Codigo}','{Obj.Descricao}','{Obj.Familia}','{Obj.SubFamilia}','{Obj.UnidadeDeMedida}');
     
-                                        INSERT INTO CODIGO (CODIGO)
-                                        VALUES ('{Obj.Codigo}');
+                                        INSERT INTO CODIGO (CODIGO, DATADECADASTRO)
+                                        VALUES ('{Obj.Codigo}', GETDATE());
     
                                         COMMIT;
 
