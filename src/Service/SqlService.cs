@@ -85,10 +85,37 @@ namespace erpfake.Data.Service
             }
         }
 
-        public void Pesquisar(int ID)
+        public Material Pesquisar(int ID)
         {
-            string Query = $@"SELECT";
+            Material Material = new Material();
+            string Query = $@"SELECT CODIGO, DESCRICAO, FAMILIA, SUBFAMILIA, UNIDADE_DE_MEDIDA FROM MATERIAL
+                                WHERE CODIGO = @ID;";
+
+            using (SqlConnection cnn = new SqlConnection(StringDeConexao))
+            {
+                cnn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(Query, cnn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", ID); // Define o parâmetro @ID com o valor recebido
+
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        while (leitor.Read())
+                        {
+                            // Atribui os valores das colunas ao objeto Material
+                            Material.Codigo = Convert.ToInt32(leitor["CODIGO"]);
+                            Material.Descricao = leitor["DESCRICAO"].ToString();
+                            Material.Familia = leitor["FAMILIA"].ToString();
+                            Material.SubFamilia = leitor["SUBFAMILIA"].ToString();
+                            Material.UnidadeDeMedida = leitor["UNIDADE_DE_MEDIDA"].ToString();
+                        }
+                    }
+                }
+            }
+            return Material;
         }
+
 
         public string[] FamiliaComboBoxItens()
         {

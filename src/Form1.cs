@@ -71,8 +71,6 @@ namespace erpfake
             }
         }
 
-
-
         private void InserirButton_Click(object sender, EventArgs e)
         {
             Material MaterialParaCadastro = new Material();
@@ -110,19 +108,34 @@ namespace erpfake
             groupBox2.Visible = true;
             MessageBox.Show("Material cadastrado com sucesso");
 
-            CodigoTextBox.Clear();
-            DescricaoTextBox.Clear();
-            FamiliaComboBox.SelectedIndex = -1;
-            SubFamiliaComboBox.SelectedIndex = -1;
-            UnidadeDeMedidaComboBox.SelectedIndex = -1;
+            //// Limpar configurador de material
+            //CodigoTextBox.Clear();
+            //DescricaoTextBox.Clear();
+            //FamiliaComboBox.SelectedIndex = -1;
+            //SubFamiliaComboBox.SelectedIndex = -1;
+            //UnidadeDeMedidaComboBox.SelectedIndex = -1;
         }
 
         private void PesquisarButton_Click(object sender, EventArgs e)
         {
-            if(SqlService.MaterialJaCadastrado(589))
+            int MaterialID = CodigoTextBox.Text.Length == 0 ? -1 : Convert.ToInt32(CodigoTextBox.Text);
+            if (MaterialID == -1)
             {
-                SqlService.Pesquisar(589);
+                MessageBox.Show("Necessário o código do material para pesquisa");
+                return;
             }
+
+            if (SqlService.MaterialJaCadastrado(MaterialID))
+            {
+                Material Material = SqlService.Pesquisar(MaterialID);
+                DescricaoTextBox.Text = Material.Descricao;
+                FamiliaComboBox.SelectedItem = Material.Familia;
+                SubFamiliaComboBox.SelectedItem = Material.SubFamilia;
+                UnidadeDeMedidaComboBox.SelectedItem = Material.UnidadeDeMedida;
+                return;
+            }
+            MessageBox.Show("Material não cadastrado no banco de dados, tente outro ID");
+            return;
         }
 
         private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,19 +153,24 @@ namespace erpfake
 
         private void Excluir_Click(object sender, EventArgs e)
         {
-            int MaterialASerDeletado = Convert.ToInt32(CodigoTextBox.Text);
-
-            if(SqlService.MaterialJaCadastrado(MaterialASerDeletado))
+            int MaterialID = CodigoTextBox.Text.Length == 0 ? -1 : Convert.ToInt32(CodigoTextBox.Text);
+            if (MaterialID == -1)
             {
-                DialogResult AvisoParaDeletarUmCadastro = MessageBox.Show($"Deletar todos os dados do cadastro: {MaterialASerDeletado} ?", "Aviso!", MessageBoxButtons.YesNo);
+                MessageBox.Show("Necessário o código do material para excluir");
+                return;
+            }
+
+            else if (SqlService.MaterialJaCadastrado(MaterialID))
+            {
+                DialogResult AvisoParaDeletarUmCadastro = MessageBox.Show($"Deletar todos os dados do cadastro: {MaterialID} ?", "Aviso!", MessageBoxButtons.YesNo);
                 if (AvisoParaDeletarUmCadastro == DialogResult.Yes)
                 {
-                    SqlService.Deletar(MaterialASerDeletado);
+                    SqlService.Deletar(MaterialID);
                     AvisoParaDeletarUmCadastro = MessageBox.Show("Material excluído com sucesso"); ;
                 }
                 return;
             }
-            MessageBox.Show($"Não existe cadastro do material: {MaterialASerDeletado}");
+            MessageBox.Show($"Não existe cadastro do material: {MaterialID}");
             return;
         }
     }
