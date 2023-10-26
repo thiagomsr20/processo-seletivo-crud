@@ -138,5 +138,22 @@ namespace erpfake
             }
         }
 
+        private void Excluir_Click(object sender, EventArgs e)
+        {
+            int MaterialASerDeletado = Convert.ToInt32(CodigoTextBox.Text);
+
+            if(SqlService.MaterialJaCadastrado(MaterialASerDeletado))
+            {
+                DialogResult AvisoParaDeletarUmCadastro = MessageBox.Show($"Deletar todos os dados do cadastro: {MaterialASerDeletado} ?", "Aviso!", MessageBoxButtons.YesNo);
+                if (AvisoParaDeletarUmCadastro == DialogResult.Yes)
+                {
+                    SqlService.Deletar(MaterialASerDeletado);
+                    AvisoParaDeletarUmCadastro = MessageBox.Show("Material excluído com sucesso"); ;
+                }
+                return;
+            }
+            MessageBox.Show($"Não existe cadastro do material: {MaterialASerDeletado}");
+            return;
+        }
     }
 }

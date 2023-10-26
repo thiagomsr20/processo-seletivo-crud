@@ -33,6 +33,12 @@ namespace erpfake
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UltimoCadastroUnMedida = new System.Windows.Forms.Label();
+            this.UltimoCadastroSubFamilia = new System.Windows.Forms.Label();
+            this.UltimoCadastroFamilia = new System.Windows.Forms.Label();
+            this.UltimoCadastroDescricao = new System.Windows.Forms.Label();
+            this.UltimoCadastroCodigo = new System.Windows.Forms.Label();
             this.DescricaoMensagemDeErro = new System.Windows.Forms.Label();
             this.CodigoMensagemDeErro = new System.Windows.Forms.Label();
             this.PesquisarButton = new System.Windows.Forms.Button();
@@ -50,12 +56,6 @@ namespace erpfake
             this.FamiliaLabel = new System.Windows.Forms.Label();
             this.DescricaoLabel = new System.Windows.Forms.Label();
             this.CodigoLabel = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UltimoCadastroCodigo = new System.Windows.Forms.Label();
-            this.UltimoCadastroDescricao = new System.Windows.Forms.Label();
-            this.UltimoCadastroFamilia = new System.Windows.Forms.Label();
-            this.UltimoCadastroSubFamilia = new System.Windows.Forms.Label();
-            this.UltimoCadastroUnMedida = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,66 @@ namespace erpfake
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados cadastrais";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.UltimoCadastroUnMedida);
+            this.groupBox2.Controls.Add(this.UltimoCadastroSubFamilia);
+            this.groupBox2.Controls.Add(this.UltimoCadastroFamilia);
+            this.groupBox2.Controls.Add(this.UltimoCadastroDescricao);
+            this.groupBox2.Controls.Add(this.UltimoCadastroCodigo);
+            this.groupBox2.Location = new System.Drawing.Point(346, 138);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(284, 172);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Último item cadastrado";
+            this.groupBox2.Visible = false;
+            // 
+            // UltimoCadastroUnMedida
+            // 
+            this.UltimoCadastroUnMedida.AutoSize = true;
+            this.UltimoCadastroUnMedida.Location = new System.Drawing.Point(18, 144);
+            this.UltimoCadastroUnMedida.Name = "UltimoCadastroUnMedida";
+            this.UltimoCadastroUnMedida.Size = new System.Drawing.Size(35, 13);
+            this.UltimoCadastroUnMedida.TabIndex = 4;
+            this.UltimoCadastroUnMedida.Text = "label5";
+            // 
+            // UltimoCadastroSubFamilia
+            // 
+            this.UltimoCadastroSubFamilia.AutoSize = true;
+            this.UltimoCadastroSubFamilia.Location = new System.Drawing.Point(18, 115);
+            this.UltimoCadastroSubFamilia.Name = "UltimoCadastroSubFamilia";
+            this.UltimoCadastroSubFamilia.Size = new System.Drawing.Size(35, 13);
+            this.UltimoCadastroSubFamilia.TabIndex = 3;
+            this.UltimoCadastroSubFamilia.Text = "label4";
+            // 
+            // UltimoCadastroFamilia
+            // 
+            this.UltimoCadastroFamilia.AutoSize = true;
+            this.UltimoCadastroFamilia.Location = new System.Drawing.Point(18, 86);
+            this.UltimoCadastroFamilia.Name = "UltimoCadastroFamilia";
+            this.UltimoCadastroFamilia.Size = new System.Drawing.Size(35, 13);
+            this.UltimoCadastroFamilia.TabIndex = 2;
+            this.UltimoCadastroFamilia.Text = "label3";
+            // 
+            // UltimoCadastroDescricao
+            // 
+            this.UltimoCadastroDescricao.AutoSize = true;
+            this.UltimoCadastroDescricao.Location = new System.Drawing.Point(18, 57);
+            this.UltimoCadastroDescricao.Name = "UltimoCadastroDescricao";
+            this.UltimoCadastroDescricao.Size = new System.Drawing.Size(35, 13);
+            this.UltimoCadastroDescricao.TabIndex = 1;
+            this.UltimoCadastroDescricao.Text = "label2";
+            // 
+            // UltimoCadastroCodigo
+            // 
+            this.UltimoCadastroCodigo.AutoSize = true;
+            this.UltimoCadastroCodigo.Location = new System.Drawing.Point(18, 26);
+            this.UltimoCadastroCodigo.Name = "UltimoCadastroCodigo";
+            this.UltimoCadastroCodigo.Size = new System.Drawing.Size(111, 13);
+            this.UltimoCadastroCodigo.TabIndex = 0;
+            this.UltimoCadastroCodigo.Text = "UltimoCadastroCodigo";
             // 
             // DescricaoMensagemDeErro
             // 
@@ -132,6 +192,7 @@ namespace erpfake
             this.Excluir.TabIndex = 12;
             this.Excluir.Text = "Excluir";
             this.Excluir.UseVisualStyleBackColor = true;
+            this.Excluir.Click += new System.EventHandler(this.Excluir_Click);
             // 
             // AtualizaButton
             // 
@@ -244,66 +305,6 @@ namespace erpfake
             this.CodigoLabel.Size = new System.Drawing.Size(43, 13);
             this.CodigoLabel.TabIndex = 0;
             this.CodigoLabel.Text = "Código:";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.UltimoCadastroUnMedida);
-            this.groupBox2.Controls.Add(this.UltimoCadastroSubFamilia);
-            this.groupBox2.Controls.Add(this.UltimoCadastroFamilia);
-            this.groupBox2.Controls.Add(this.UltimoCadastroDescricao);
-            this.groupBox2.Controls.Add(this.UltimoCadastroCodigo);
-            this.groupBox2.Location = new System.Drawing.Point(346, 138);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(284, 172);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Último item cadastrado";
-            this.groupBox2.Visible = false;
-            // 
-            // UltimoCadastroCodigo
-            // 
-            this.UltimoCadastroCodigo.AutoSize = true;
-            this.UltimoCadastroCodigo.Location = new System.Drawing.Point(18, 26);
-            this.UltimoCadastroCodigo.Name = "UltimoCadastroCodigo";
-            this.UltimoCadastroCodigo.Size = new System.Drawing.Size(111, 13);
-            this.UltimoCadastroCodigo.TabIndex = 0;
-            this.UltimoCadastroCodigo.Text = "UltimoCadastroCodigo";
-            // 
-            // UltimoCadastroDescricao
-            // 
-            this.UltimoCadastroDescricao.AutoSize = true;
-            this.UltimoCadastroDescricao.Location = new System.Drawing.Point(18, 57);
-            this.UltimoCadastroDescricao.Name = "UltimoCadastroDescricao";
-            this.UltimoCadastroDescricao.Size = new System.Drawing.Size(35, 13);
-            this.UltimoCadastroDescricao.TabIndex = 1;
-            this.UltimoCadastroDescricao.Text = "label2";
-            // 
-            // UltimoCadastroFamilia
-            // 
-            this.UltimoCadastroFamilia.AutoSize = true;
-            this.UltimoCadastroFamilia.Location = new System.Drawing.Point(18, 86);
-            this.UltimoCadastroFamilia.Name = "UltimoCadastroFamilia";
-            this.UltimoCadastroFamilia.Size = new System.Drawing.Size(35, 13);
-            this.UltimoCadastroFamilia.TabIndex = 2;
-            this.UltimoCadastroFamilia.Text = "label3";
-            // 
-            // UltimoCadastroSubFamilia
-            // 
-            this.UltimoCadastroSubFamilia.AutoSize = true;
-            this.UltimoCadastroSubFamilia.Location = new System.Drawing.Point(18, 115);
-            this.UltimoCadastroSubFamilia.Name = "UltimoCadastroSubFamilia";
-            this.UltimoCadastroSubFamilia.Size = new System.Drawing.Size(35, 13);
-            this.UltimoCadastroSubFamilia.TabIndex = 3;
-            this.UltimoCadastroSubFamilia.Text = "label4";
-            // 
-            // UltimoCadastroUnMedida
-            // 
-            this.UltimoCadastroUnMedida.AutoSize = true;
-            this.UltimoCadastroUnMedida.Location = new System.Drawing.Point(18, 144);
-            this.UltimoCadastroUnMedida.Name = "UltimoCadastroUnMedida";
-            this.UltimoCadastroUnMedida.Size = new System.Drawing.Size(35, 13);
-            this.UltimoCadastroUnMedida.TabIndex = 4;
-            this.UltimoCadastroUnMedida.Text = "label5";
             // 
             // Form1
             // 

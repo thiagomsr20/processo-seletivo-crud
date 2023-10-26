@@ -9,7 +9,7 @@ namespace erpfake.Data.Service
 {
     public class SqlService
     {
-        private const string StringDeConexao = @"Data Source=THIAGOPC;integrated security=SSPI;initial catalog=TESTE;";
+        private const string StringDeConexao = @"Data Source=THIAGOPC;integrated security=SSPI;initial catalog=ERPFAKE;";
         public bool MaterialJaCadastrado(int ID)
         {
             bool MaterialCadastrado = false;
@@ -70,16 +70,18 @@ namespace erpfake.Data.Service
 
         public void Deletar(int ID)
         {
-            string codigoQuery = $"DELETE FROM CODIGO WHERE codigo = SeuParametro;";
-            string materialQuery = $"DELETE FROM MATERIAL WHERE codigo = SeuParametro;";
+            string Query1 = $"DELETE FROM CODIGO WHERE CODIGO = {ID};";
+            string Query2 = $"DELETE FROM MATERIAL WHERE CODIGO = {ID};";
 
-            // Execute as instruções SQL de exclusão usando sua conexão com o banco de dados.
-            using(SqlConnection cnn = new SqlConnection(StringDeConexao))
+            using (SqlConnection cnn = new SqlConnection(StringDeConexao))
             {
-                SqlCommand cmd1 = new SqlCommand();
-                SqlCommand cmd2 = new SqlCommand();
+                cnn.Open();
 
-                
+                SqlCommand cmd1 = new SqlCommand(Query1, cnn);
+                SqlCommand cmd2 = new SqlCommand(Query2, cnn);
+
+                cmd1.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
             }
         }
 
