@@ -129,7 +129,7 @@ namespace erpfake.Data.Service
 
 	                                UPDATE CODIGOS
 	                                SET DATADEMODIFICACAO = GETDATE()
-	                                WHERE CODIGOS = {Obj.Codigo};
+	                                WHERE CODIGO = {Obj.Codigo};
 
 	                                COMMIT;
                                 END TRY
