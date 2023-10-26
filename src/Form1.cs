@@ -51,9 +51,9 @@ namespace erpfake
             {
                 Codigo = Convert.ToInt32(CodigoTextBox.Text),
                 Descricao = DescricaoTextBox.Text,
-                Familia = FamiliaComboBox.SelectedText,
-                SubFamilia = SubFamiliaComboBox.SelectedText,
-                UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedText
+                Familia = FamiliaComboBox.SelectedItem.ToString(),
+                SubFamilia = SubFamiliaComboBox.SelectedItem.ToString(),
+                UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString()
             };
 
             ServicoSQL.Inserir(NovoMaterial);
@@ -66,6 +66,7 @@ namespace erpfake
 
         private void FamiliaComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SubFamiliaComboBox.Items.Clear();
             if (FamiliaComboBox.SelectedItem != null)
             {
                 string familiaSelecionada = FamiliaComboBox.SelectedItem.ToString();
