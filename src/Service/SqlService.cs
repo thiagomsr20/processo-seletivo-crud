@@ -68,6 +68,21 @@ namespace erpfake.Data.Service
             }
         }
 
+        public void Deletar(int ID)
+        {
+            string codigoQuery = $"DELETE FROM CODIGO WHERE codigo = SeuParametro;";
+            string materialQuery = $"DELETE FROM MATERIAL WHERE codigo = SeuParametro;";
+
+            // Execute as instruções SQL de exclusão usando sua conexão com o banco de dados.
+            using(SqlConnection cnn = new SqlConnection(StringDeConexao))
+            {
+                SqlCommand cmd1 = new SqlCommand();
+                SqlCommand cmd2 = new SqlCommand();
+
+                
+            }
+        }
+
         public void Pesquisar(int ID)
         {
             string Query = $@"SELECT";

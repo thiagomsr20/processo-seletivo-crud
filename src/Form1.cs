@@ -53,9 +53,24 @@ namespace erpfake
                 CodigoMensagemDeErro.Text = "Apenas números inteiros válidos";
             }
             else{
-                CodigoMensagemDeErro.Text = "";
+                CodigoMensagemDeErro.Text = string.Empty;
             }
         }
+
+        private void DescricaoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (DescricaoTextBox.Text.Length > 100)
+            {
+                e.Handled = true;
+                DescricaoMensagemDeErro.Text = "Limite de caracteres atingido (100)";
+                return;
+            }
+            else
+            {
+                DescricaoMensagemDeErro.Text = string.Empty;
+            }
+        }
+
 
 
         private void InserirButton_Click(object sender, EventArgs e)
@@ -86,10 +101,14 @@ namespace erpfake
 
             SqlService.Inserir(MaterialParaCadastro);
 
+            UltimoCadastroCodigo.Text = $"Código: {MaterialParaCadastro.Codigo}";
+            UltimoCadastroDescricao.Text = $"Descrição: {MaterialParaCadastro.Descricao}";
+            UltimoCadastroFamilia.Text= $"Família: {MaterialParaCadastro.Familia}";
+            UltimoCadastroSubFamilia.Text = $"Sub família: {MaterialParaCadastro.SubFamilia}";
+            UltimoCadastroUnMedida.Text = $"Unidade de medida: {MaterialParaCadastro.UnidadeDeMedida}";
+
             groupBox2.Visible = true;
             MessageBox.Show("Material cadastrado com sucesso");
-
-            
 
             CodigoTextBox.Clear();
             DescricaoTextBox.Clear();
