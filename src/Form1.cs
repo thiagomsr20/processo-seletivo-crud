@@ -62,9 +62,20 @@ namespace erpfake
         {
             Material MaterialParaCadastro = new Material();
             MaterialParaCadastro.Codigo = CodigoTextBox.Text.Length == 0 ? -1 : Convert.ToInt32(CodigoTextBox.Text);
-            if(MaterialParaCadastro.Codigo == -1)
+            if (string.IsNullOrEmpty(DescricaoTextBox.Text) || string.IsNullOrEmpty(FamiliaComboBox.SelectedItem.ToString()) ||
+                string.IsNullOrEmpty(SubFamiliaComboBox.SelectedItem.ToString()) || string.IsNullOrEmpty(UnidadeDeMedidaComboBox.SelectedItem.ToString()))
             {
-                MessageBox.Show($"Necessário código de material para cadastro");
+                MessageBox.Show("Preencha todos os campos para cadastrar uma material");
+                return;
+            }
+            else if (MaterialParaCadastro.Codigo == -1)
+            {
+                MessageBox.Show("Necessário código de material para cadastro");
+                return;
+            }
+            else if (SqlService.MaterialJaCadastrado(MaterialParaCadastro.Codigo))
+            {
+                MessageBox.Show("Material já cadastrado no banco");
                 return;
             }
 
@@ -73,11 +84,6 @@ namespace erpfake
             MaterialParaCadastro.SubFamilia = SubFamiliaComboBox.SelectedItem.ToString();
             MaterialParaCadastro.UnidadeDeMedida = UnidadeDeMedidaComboBox.SelectedItem.ToString();
 
-            if (SqlService.MaterialJaCadastrado(MaterialParaCadastro.Codigo))
-            {
-                MessageBox.Show("Material já cadastrado no banco");
-                return;
-            }
             SqlService.Inserir(MaterialParaCadastro);
             MessageBox.Show("Material cadastrado com sucesso");
         }
